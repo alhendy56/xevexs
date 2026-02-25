@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلباتي | Xevexs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>* { font-family: 'Cairo', sans-serif; }</style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded flex items-center justify-center text-white font-bold">X</div>
+                <span class="text-xl font-bold text-primary-800">evexs</span>
+            </a>
+            <button onclick="logout()" class="text-red-500">تسجيل الخروج</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col lg:flex-row gap-8">
+            <aside class="lg:w-64">
+                <div class="bg-white rounded-2xl shadow-sm p-6 sticky top-24">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-primary-100 rounded-full flex items-center justify-center text-primary-700 text-3xl font-bold mx-auto mb-3">أ</div>
+                        <h2 class="font-bold">أحمد محمد</h2>
+                    </div>
+                    <nav class="space-y-1">
+                        <a href="account.html" class="block px-4 py-3 hover:bg-gray-50 rounded-xl"><i class="fas fa-user ml-2"></i> الملف الشخصي</a>
+                        <a href="orders.html" class="block px-4 py-3 bg-primary-50 text-primary-700 rounded-xl font-bold"><i class="fas fa-shopping-bag ml-2"></i> طلباتي</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <div class="flex-1 space-y-4">
+                <div class="bg-white rounded-2xl shadow-sm p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="font-bold">#XE-2024-001245</p>
+                            <p class="text-sm text-gray-500">24 فبراير 2024</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-bold">تم التسليم</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1570222094114-28a9d88a65e7?w=80" class="w-16 h-16 rounded-lg object-cover">
+                        <div class="flex-1">
+                            <p class="font-bold">عصارة كهربائية</p>
+                            <p class="text-sm text-gray-500">3 منتجات</p>
+                        </div>
+                        <p class="font-bold text-primary-700">1,250 EGP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        if (!localStorage.getItem('xevexs_user')) window.location.href = 'login.html';
+        function logout() {
+            localStorage.removeItem('xevexs_user');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

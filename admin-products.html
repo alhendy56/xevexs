@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنتجات | Xevexs Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>* { font-family: 'Cairo', sans-serif; }</style>
+</head>
+<body class="bg-gray-100">
+
+    <aside class="fixed right-0 top-0 h-full w-64 bg-slate-900 text-white z-50">
+        <div class="p-6 border-b border-slate-700">
+            <h1 class="font-bold text-xl">Xevexs Admin</h1>
+        </div>
+        <nav class="p-4 space-y-2">
+            <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="products.html" class="flex items-center gap-3 px-4 py-3 bg-primary-600 rounded-xl"><i class="fas fa-box"></i> المنتجات</a>
+            <a href="orders.html" class="flex items-center gap-3 px-4 py-3 hover:bg-slate-800 rounded-xl"><i class="fas fa-shopping-bag"></i> الطلبات</a>
+        </nav>
+    </aside>
+
+    <main class="mr-64 p-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">إدارة المنتجات</h2>
+            <button onclick="openModal()" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700">
+                <i class="fas fa-plus ml-2"></i> إضافة منتج
+            </button>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-4 text-right">المنتج</th>
+                        <th class="px-6 py-4 text-right">السعر</th>
+                        <th class="px-6 py-4 text-right">المخزون</th>
+                        <th class="px-6 py-4 text-right">الإجراءات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-6 py-4 flex items-center gap-3">
+                            <img src="https://images.unsplash.com/photo-1570222094114-28a9d88a65e7?w=60" class="w-14 h-14 rounded-lg object-cover">
+                            <div>
+                                <p class="font-bold">عصارة كهربائية</p>
+                                <p class="text-xs text-gray-500">SKU: XE-001</p>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex gap-1">
+                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">🇪🇬 450</span>
+                                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">🇸🇦 87</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-green-600 font-bold">45</td>
+                        <td class="px-6 py-4">
+                            <button class="text-blue-600 hover:bg-blue-50 p-2 rounded-lg"><i class="fas fa-edit"></i></button>
+                            <button class="text-red-600 hover:bg-red-50 p-2 rounded-lg"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black/50 z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6 border-b flex justify-between">
+                <h3 class="text-xl font-bold">إضافة منتج جديد</h3>
+                <button onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="p-6 space-y-4">
+                <input type="text" placeholder="اسم المنتج" class="w-full px-4 py-3 border rounded-lg">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="number" placeholder="السعر في مصر" class="w-full px-4 py-3 border rounded-lg">
+                    <input type="number" placeholder="السعر في السعودية" class="w-full px-4 py-3 border rounded-lg">
+                </div>
+                <button onclick="saveProduct()" class="w-full bg-primary-600 text-white py-3 rounded-lg font-bold">حفظ المنتج</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (!localStorage.getItem('xevexs_admin')) window.location.href = 'index.html';
+        
+        function openModal() {
+            document.getElementById('productModal').classList.remove('hidden');
+            document.getElementById('productModal').classList.add('flex');
+        }
+        
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+            document.getElementById('productModal').classList.remove('flex');
+        }
+        
+        function saveProduct() {
+            alert('تم حفظ المنتج!');
+            closeModal();
+        }
+    </script>
+</body>
+</html>

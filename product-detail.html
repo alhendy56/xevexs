@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج | Xevexs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>* { font-family: 'Cairo', sans-serif; }</style>
+</head>
+<body class="bg-gray-50">
+
+    <header class="fixed top-0 w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold">X</div>
+                <span class="text-2xl font-bold text-primary-800">evexs</span>
+            </a>
+            <button onclick="history.back()" class="text-gray-600"><i class="fas fa-arrow-right text-xl"></i></button>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-16 container mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Images -->
+            <div class="space-y-4">
+                <div class="bg-white rounded-2xl p-4 aspect-square">
+                    <img src="https://images.unsplash.com/photo-1570222094114-28a9d88a65e7?w=600" class="w-full h-full object-contain">
+                </div>
+                <div class="grid grid-cols-4 gap-3">
+                    <button class="border-2 border-primary-600 rounded-xl overflow-hidden aspect-square"><img src="https://images.unsplash.com/photo-1570222094114-28a9d88a65e7?w=150" class="w-full h-full object-cover"></button>
+                    <button class="border-2 border-transparent hover:border-primary-300 rounded-xl overflow-hidden aspect-square"><img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=150" class="w-full h-full object-cover"></button>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div class="space-y-6">
+                <div>
+                    <span class="bg-primary-100 text-primary-700 text-xs font-bold px-2 py-1 rounded">أدوات المطبخ</span>
+                    <h1 class="text-3xl font-bold mt-3">عصارة كهربائية متعددة الوظائف 500 وات</h1>
+                    <div class="flex items-center gap-2 mt-2">
+                        <div class="flex text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <span class="text-gray-500">(128 تقييم)</span>
+                    </div>
+                </div>
+
+                <div class="bg-primary-50 rounded-2xl p-6">
+                    <div class="flex items-end gap-3">
+                        <span class="text-4xl font-bold text-primary-700">450</span>
+                        <span class="text-xl text-primary-700">EGP</span>
+                        <span class="text-lg text-gray-400 line-through mb-1">600</span>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed">عصارة كهربائية عالية الأداء بقوة 500 وات، مثالية لعصر الفواكه والخضروات. تصميم أنيق وسهل التنظيف.</p>
+
+                <div class="flex gap-4">
+                    <div class="flex items-center border rounded-xl">
+                        <button onclick="updateQty(-1)" class="px-4 py-3 hover:bg-gray-100"><i class="fas fa-minus"></i></button>
+                        <input type="number" id="qty" value="1" class="w-16 text-center font-bold border-x py-3">
+                        <button onclick="updateQty(1)" class="px-4 py-3 hover:bg-gray-100"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <button onclick="addToCart()" class="flex-1 bg-primary-600 text-white py-3 rounded-xl font-bold hover:bg-primary-700"><i class="fas fa-shopping-cart ml-2"></i> أضف للسلة</button>
+                    <a href="https://wa.me/201234567890" class="px-6 py-3 border-2 border-green-500 text-green-600 rounded-xl hover:bg-green-50"><i class="fab fa-whatsapp text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function updateQty(change) {
+            const input = document.getElementById('qty');
+            let val = parseInt(input.value) + change;
+            if (val < 1) val = 1;
+            input.value = val;
+        }
+        
+        function addToCart() {
+            let cart = JSON.parse(localStorage.getItem('xevexs_cart') || '[]');
+            cart.push({ id: 1, qty: parseInt(document.getElementById('qty').value) });
+            localStorage.setItem('xevexs_cart', JSON.stringify(cart));
+            alert('تم الإضافة للسلة!');
+        }
+    </script>
+</body>
+</html>
